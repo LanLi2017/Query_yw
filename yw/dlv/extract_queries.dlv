@@ -1,0 +1,32 @@
+% q1: what's the extracted source file
+% "example.py"
+souce_file(X) :- extract_source(_, X).
+
+% q2: return all of file path
+
+url_file(X) :- annotation(_,_,_,_,"@URI", X).
+
+% q3: return dependent of annotation id
+% 5,7,9,13,...
+dep_aid(X) :- annotation_qualifies(X, _).
+
+% q4: given qualifying annotation id: 21, get the value of primary annotation id
+% "input_data_file"
+value_aid(Z):- annotation_qualifies(21, V), annotation(V,_,_,_,_,Z).
+
+% q5: Return all of primary id whoes value are "data"
+p_aid(X) :- annotation(aid,_,_,_,_,"data"), annotation_qualifies(aid, X).
+
+% q6: What out ports are qualified with URIs?
+eq3(PortName) :-
+    annotation(URI, _, _, "uri", _, _),
+    annotation(OUT, _, _, "out", _, PortName),
+    annotation_qualifies(URI, OUT).
+
+ % q7: What in ports are qualified with URIs?
+eq4(PortName) :-
+    annotation(URI, _, _, "uri", _, _),
+    annotation(IN, _, _, "in", _, PortName),
+    annotation_qualifies(URI, IN).
+
+

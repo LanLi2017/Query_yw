@@ -1,0 +1,59 @@
+% FACT: extract_source(source_id, source_path).
+extract_source(1, "example.py").
+% FACT: annotation(annotation_id, source_id, line_number, tag, keyword, value).
+annotation(1, 1, 8, "begin", "@BEGIN", "main").
+annotation(2, 1, 9, "param", "@PARAM", "db_pth").
+annotation(3, 1, 10, "param", "@PARAM", "fmodel").
+annotation(4, 1, 11, "in", "@IN", "input_mask_file").
+annotation(5, 1, 11, "uri", "@URI", "file:{db_pth}/land_water_mask/LandWaterMask_Global_CRUNCEP.nc").
+annotation(6, 1, 12, "in", "@IN", "input_data_file").
+annotation(7, 1, 12, "uri", "@URI", "file:{db_pth}/NEE_first_year.nc").
+annotation(8, 1, 13, "out", "@OUT", "result_NEE_pdf").
+annotation(9, 1, 13, "uri", "@URI", "file:result_NEE.pdf").
+annotation(10, 1, 17, "begin", "@BEGIN", "fetch_mask").
+annotation(11, 1, 18, "param", "@PARAM", "db_pth").
+annotation(12, 1, 19, "in", "@IN", "g").
+annotation(13, 1, 19, "as", "@AS", "input_mask_file").
+annotation(14, 1, 19, "uri", "@URI", "file:{db_pth}/land_water_mask/LandWaterMask_Global_CRUNCEP.nc").
+annotation(15, 1, 20, "out", "@OUT", "mask").
+annotation(16, 1, 20, "as", "@AS", "land_water_mask").
+annotation(17, 1, 24, "end", "@END", "fetch_mask").
+annotation(18, 1, 27, "begin", "@BEGIN", "load_data").
+annotation(19, 1, 28, "param", "@PARAM", "db_pth").
+annotation(20, 1, 29, "in", "@IN", "input_data_file").
+annotation(21, 1, 29, "uri", "@URI", "file:{db_pth}/NEE_first_year.nc").
+annotation(22, 1, 30, "out", "@OUT", "data").
+annotation(23, 1, 30, "as", "@AS", "NEE_data").
+annotation(24, 1, 37, "end", "@END", "load_data").
+annotation(25, 1, 40, "begin", "@BEGIN", "standardize_with_mask").
+annotation(26, 1, 41, "in", "@IN", "data").
+annotation(27, 1, 41, "as", "@AS", "NEE_data").
+annotation(28, 1, 42, "in", "@IN", "mask").
+annotation(29, 1, 42, "as", "@AS", "land_water_mask").
+annotation(30, 1, 43, "out", "@OUT", "data").
+annotation(31, 1, 43, "as", "@AS", "standardized_NEE_data").
+annotation(32, 1, 52, "end", "@END", "standardize_with_mask").
+annotation(33, 1, 55, "begin", "@BEGIN", "simple_diagnose").
+annotation(34, 1, 56, "param", "@PARAM", "fmodel").
+annotation(35, 1, 57, "in", "@IN", "data").
+annotation(36, 1, 57, "as", "@AS", "standardized_NEE_data").
+annotation(37, 1, 58, "out", "@OUT", "pp").
+annotation(38, 1, 58, "as", "@AS", "result_NEE_pdf").
+annotation(39, 1, 58, "uri", "@URI", "file:result_NEE.pdf").
+annotation(40, 1, 65, "end", "@END", "simple_diagnose").
+annotation(41, 1, 67, "end", "@END", "main").
+% FACT: annotation_qualifies(qualifying_annotation_id, primary_annotation_id).
+annotation_qualifies(5, 4).
+annotation_qualifies(7, 6).
+annotation_qualifies(9, 8).
+annotation_qualifies(13, 12).
+annotation_qualifies(14, 12).
+annotation_qualifies(16, 15).
+annotation_qualifies(21, 20).
+annotation_qualifies(23, 22).
+annotation_qualifies(27, 26).
+annotation_qualifies(29, 28).
+annotation_qualifies(31, 30).
+annotation_qualifies(36, 35).
+annotation_qualifies(38, 37).
+annotation_qualifies(39, 37).
